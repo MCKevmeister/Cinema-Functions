@@ -405,4 +405,54 @@ namespace Cinema_Tests
             Assert.AreEqual(-1, familyPassTicketCost);
         }
     }
+
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Chick Flick Thursday")]
+    public class ChickFlickThursday
+    {
+        [TestCase, Description("Standard Chick Flick Thursday, 1 Adult on Thursday cost $21.50")]
+        public void When_1AdultThursday_Expect_Cost2150()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(1, "adult", "thursday");
+            Assert.AreEqual(21.50m, familyPassTicketCost);
+            Assert.NotNull(familyPassTicketCost);
+            Assert.IsInstanceOf<decimal>(familyPassTicketCost);
+            Assert.IsNotNull(familyPassTicketCost);
+        }
+        [TestCase, Description("3 Adults on Thursday cost $63.50")]
+        public void When_1AdultThursday_Expect_Cost6350()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(3, "adult", "thursday");
+            Assert.AreEqual(64.50m, familyPassTicketCost);
+        }
+        [TestCase, Description("1 Adult on Wednesday, returns -1")]
+        public void When_1AdultWednesday_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(1, "adult", "wednesday");
+            Assert.AreEqual(-1, familyPassTicketCost);
+        }
+        [TestCase, Description("1 Child on Thursday, returns -1")]
+        public void When_1ChildThursday_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(1, "child", "thursday");
+            Assert.AreEqual(-1, familyPassTicketCost);
+        }
+        [TestCase, Description("1 Student on Thursday, returns -1")]
+        public void When_1StudentThursday_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(1, "student", "thursday");
+            Assert.AreEqual(-1, familyPassTicketCost);
+        }
+        [TestCase, Description("1 @du17 handles random strings, returns -1")]
+        public void When_1RandomStringThursday_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(1, "@du17", "thursday");
+            Assert.AreEqual(-1, familyPassTicketCost);
+        }
+    }
 }
