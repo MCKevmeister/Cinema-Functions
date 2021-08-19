@@ -1,4 +1,5 @@
 ﻿using Cinema_Functions;
+using Newtonsoft.Json.Serialization;
 using NUnit.Framework;
 
 namespace Cinema_Tests
@@ -340,6 +341,68 @@ namespace Cinema_Tests
             TicketPriceController ticketPriceController = new();
             var studentTicketCost = ticketPriceController.Student(1, "senior");
             Assert.AreEqual(-1, studentTicketCost);
+        }
+    }
+
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Family Pass")]
+    public class FamilyPass
+    {
+        [TestCase, Description("Test for family ticket, 2 Adults 2 Children cost $46")]
+        public void When_1FamilyPass2Adult2Children_Expect_Cost4600()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Family_Pass(1, 2, 2);
+            Assert.AreEqual(46.00m, familyPassTicketCost);
+            Assert.NotNull(familyPassTicketCost);
+            Assert.IsInstanceOf<decimal>(familyPassTicketCost);
+            Assert.IsNotNull(familyPassTicketCost);
+        }
+        [TestCase, Description("Test for family ticket, 1 Adults 3 Children cost $46")]
+        public void When_1FamilyPass1Adult3Children_Expect_Cost4600()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Family_Pass(1, 1, 3);
+            Assert.AreEqual(46.00m, familyPassTicketCost);
+            Assert.NotNull(familyPassTicketCost);
+            Assert.IsInstanceOf<decimal>(familyPassTicketCost);
+            Assert.IsNotNull(familyPassTicketCost);
+        }
+        [TestCase, Description("1 Family pass 3 Adults 1 Child should return -1")]
+        public void When_1FamilyPass3Adult1Child_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Family_Pass(1, 3, 1);
+            Assert.AreEqual(-1, familyPassTicketCost);
+            Assert.NotNull(familyPassTicketCost);
+            Assert.IsNotNull(familyPassTicketCost);
+        }
+        [TestCase, Description("1 Family pass 0 Adults 4 Children should return -1")]
+        public void When_1FamilyPass0Adult4Child_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Family_Pass(1, 0, 4);
+            Assert.AreEqual(-1, familyPassTicketCost);
+        }
+        [TestCase, Description("1 Family pass 4 Adults 0 Children should return -1")]
+        public void When_1FamilyPass4Adult0Child_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Family_Pass(1, 4, 0);
+            Assert.AreEqual(-1, familyPassTicketCost);
+        }
+        [TestCase, Description("10 Family pass 20 Adults 20 Children should return -1")]
+        public void When_10FamilyPass20Adult20Child_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Family_Pass(10, 20, 20);
+            Assert.AreEqual(-1, familyPassTicketCost);
+        }
+        [TestCase, Description("Negative numbers are handled, should return -1")]
+        public void When_Negative1FamilyPass2Adult2Child_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var familyPassTicketCost = ticketPriceController.Family_Pass(-1, 2, 2);
+            Assert.AreEqual(-1, familyPassTicketCost);
         }
     }
 }
