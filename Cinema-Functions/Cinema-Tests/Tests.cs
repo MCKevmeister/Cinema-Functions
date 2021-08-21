@@ -1,5 +1,4 @@
 ﻿using Cinema_Functions;
-using Newtonsoft.Json.Serialization;
 using NUnit.Framework;
 
 namespace Cinema_Tests
@@ -12,7 +11,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Before_5(1, "adult", "monday", 1.00m);
-            Assert.AreEqual(14.5, adultTicketCost);
+            Assert.AreEqual(14.5m, adultTicketCost);
         }
 
         [TestCase, Description("Test for different day")]
@@ -20,7 +19,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Before_5(1, "adult", "saturday", 2.00m);
-            Assert.AreEqual(14.5, adultTicketCost);
+            Assert.AreEqual(14.5m, adultTicketCost);
         }
 
         [TestCase, Description("Test for 3 adult tickets")]
@@ -28,7 +27,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Before_5(3, "adult", "thursday", 1.30m);
-            Assert.AreEqual(43.50, adultTicketCost);
+            Assert.AreEqual(43.50m, adultTicketCost);
         }
 
         [TestCase, Description("Test for adult on tuesday")]
@@ -36,7 +35,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Before_5(1, "adult", "tuesday", 2.45m);
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
 
         [TestCase, Description("Test for Child, should return -1")]
@@ -44,7 +43,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Before_5(1, "child", "wednesday", 2.45m);
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
 
         [TestCase, Description("Test for Student, should return -1")]
@@ -52,7 +51,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Before_5(1, "student", "wednesday", 3.00m);
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
 
         [TestCase, Description("Test for Senior, should return -1")]
@@ -60,7 +59,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Before_5(1, "senior", "wednesday", 3.00m);
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
 
         [TestCase(Ignore = "Bug"),
@@ -69,7 +68,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Before_5(1, "adult", "wednesday", 10.00m);
-            Assert.AreEqual(14.5, adultTicketCost);
+            Assert.AreEqual(14.5m, adultTicketCost);
         }
 
         [TestCase, Description("Test for family, should return -1")]
@@ -77,7 +76,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Before_5(1, "family", "wednesday", 3.00m);
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
     }
 
@@ -89,7 +88,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_After_5(1, "adult", "wednesday", 6.00m);
-            Assert.AreEqual(17.5, adultTicketCost);
+            Assert.AreEqual(17.5m, adultTicketCost);
         }
 
         [TestCase, Description("Multiple adult tickets")]
@@ -97,7 +96,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_After_5(2, "adult", "thursday", 7.45m);
-            Assert.AreEqual(35,adultTicketCost);
+            Assert.AreEqual(35m,adultTicketCost);
         }
 
         [TestCase]
@@ -105,7 +104,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_After_5(1, "adult", "saturday", 8.00m);
-            Assert.AreEqual(17.50, adultTicketCost);
+            Assert.AreEqual(17.50m, adultTicketCost);
         }
 
         [TestCase]
@@ -113,7 +112,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_After_5(1, "student", "wednesday", 8.00m);
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
 
         [TestCase]
@@ -121,7 +120,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_After_5(1, "family", "wednesday", 8.00m);
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
 
         [TestCase]
@@ -129,7 +128,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_After_5(1, "senior", "wednesday", 8.00m);
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
 
         [TestCase, Description("Handles uppercase letters for person")]
@@ -137,7 +136,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_After_5(1, "ADULT", "WEDNESDAY", 8.00m);
-            Assert.AreEqual(17.5, adultTicketCost);
+            Assert.AreEqual(17.5m, adultTicketCost);
         }
     }
 
@@ -149,7 +148,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Tuesday(1, "adult", "tuesday");
-            Assert.AreEqual(13,adultTicketCost);
+            Assert.AreEqual(13m,adultTicketCost);
         }
 
         [TestCase, Description("Test for 4 adult tickets")]
@@ -157,7 +156,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Tuesday(4, "adult", "tuesday");
-            Assert.AreEqual(52, adultTicketCost);
+            Assert.AreEqual(52m, adultTicketCost);
         }
 
         [TestCase, Description("Test for 1 child, returns -1")]
@@ -165,7 +164,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Tuesday(1, "child", "tuesday");
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
 
         [TestCase, Description("Test for 1 student, returns -1")]
@@ -173,7 +172,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Tuesday(1, "student", "tuesday");
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
 
         [TestCase, Description("Test for 1 family, returns -1")]
@@ -181,7 +180,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Tuesday(1, "family", "tuesday");
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
 
         [TestCase, Description("Test for 1 family, returns -1")]
@@ -189,7 +188,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var adultTicketCost = ticketPriceController.Adult_Tuesday(1, "adult", "wednesday");
-            Assert.AreEqual(-1, adultTicketCost);
+            Assert.AreEqual(-1m, adultTicketCost);
         }
     }
 
@@ -201,7 +200,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var childTicketCost = ticketPriceController.Child_Under_16(1, "child");
-            Assert.AreEqual(12, childTicketCost);
+            Assert.AreEqual(12m, childTicketCost);
         }
 
         [TestCase, Description("3 child tickets")]
@@ -209,7 +208,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var childTicketCost = ticketPriceController.Child_Under_16(3, "child");
-            Assert.AreEqual(36, childTicketCost);
+            Assert.AreEqual(36m, childTicketCost);
         }
 
         [TestCase, Description("3 child tickets")]
@@ -217,7 +216,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var childTicketCost = ticketPriceController.Child_Under_16(1, "student");
-            Assert.AreEqual(-1, childTicketCost);
+            Assert.AreEqual(-1m, childTicketCost);
         }
 
         [TestCase, Description("1 Family ticket")]
@@ -225,7 +224,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var childTicketCost = ticketPriceController.Child_Under_16(1, "family");
-            Assert.AreEqual(-1, childTicketCost);
+            Assert.AreEqual(-1m, childTicketCost);
         }
 
         [TestCase, Description("1 Adult ticket")]
@@ -233,7 +232,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var childTicketCost = ticketPriceController.Child_Under_16(1, "adult");
-            Assert.AreEqual(-1, childTicketCost);
+            Assert.AreEqual(-1m, childTicketCost);
         }
     }
 
@@ -245,7 +244,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var seniorTicketCost = ticketPriceController.Senior(1, "senior");
-            Assert.AreEqual(12.5, seniorTicketCost);
+            Assert.AreEqual(12.5m, seniorTicketCost);
         }
 
         [TestCase, Description("Test for 3 senior tickets")]
@@ -253,7 +252,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var seniorTicketCost = ticketPriceController.Senior(3, "senior");
-            Assert.AreEqual(37.50, seniorTicketCost);
+            Assert.AreEqual(37.50m, seniorTicketCost);
         }
 
         [TestCase, Description("Test for 3 senior tickets")]
@@ -261,7 +260,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var seniorTicketCost = ticketPriceController.Senior(1, "student");
-            Assert.AreEqual(-1, seniorTicketCost);
+            Assert.AreEqual(-1m, seniorTicketCost);
         }
 
         [TestCase, Description("Test for 1 family ticket")]
@@ -269,7 +268,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var seniorTicketCost = ticketPriceController.Senior(1, "family");
-            Assert.AreEqual(-1, seniorTicketCost);
+            Assert.AreEqual(-1m, seniorTicketCost);
         }
 
         [TestCase, Description("Test for 1 adult ticket")]
@@ -277,7 +276,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var seniorTicketCost = ticketPriceController.Senior(1, "adult");
-            Assert.AreEqual(-1, seniorTicketCost);
+            Assert.AreEqual(-1m, seniorTicketCost);
         }
 
         [TestCase, Description("Test for 1000 senior tickets")]
@@ -285,7 +284,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var seniorTicketCost = ticketPriceController.Senior(1000, "senior");
-            Assert.AreEqual(12500, seniorTicketCost);
+            Assert.AreEqual(12500m, seniorTicketCost);
         }
 
         [TestCase, Description("Test for handling negative senior tickets")]
@@ -293,7 +292,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var seniorTicketCost = ticketPriceController.Senior(-2, "senior");
-            Assert.AreEqual(-1,seniorTicketCost);
+            Assert.AreEqual(-1m,seniorTicketCost);
         }
     }
 
@@ -305,42 +304,42 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var studentTicketCost = ticketPriceController.Student(1, "student");
-            Assert.AreEqual(14, studentTicketCost);
+            Assert.AreEqual(14m, studentTicketCost);
         }
         [TestCase, Description("Test for multiple Student tickets")]
         public void When_7Students_Expect_Cost98()
         {
             TicketPriceController ticketPriceController = new();
             var studentTicketCost = ticketPriceController.Student(7, "student");
-            Assert.AreEqual(98, studentTicketCost);
+            Assert.AreEqual(98m, studentTicketCost);
         }
         [TestCase, Description("Test for negative Student tickets")]
         public void When_Negative10Students_Expect_Negative1()
         {
             TicketPriceController ticketPriceController = new();
             var studentTicketCost = ticketPriceController.Student(-10, "student");
-            Assert.AreEqual(-1, studentTicketCost);
+            Assert.AreEqual(-1m, studentTicketCost);
         }
         [TestCase, Description("Test for family ticket")]
         public void When_1Family_Expect_Negative1()
         {
             TicketPriceController ticketPriceController = new();
             var studentTicketCost = ticketPriceController.Student(1, "family");
-            Assert.AreEqual(-1, studentTicketCost);
+            Assert.AreEqual(-1m, studentTicketCost);
         }
         [TestCase, Description("Test for adult ticket")]
         public void When_1Adult_Expect_Negative1()
         {
             TicketPriceController ticketPriceController = new();
             var studentTicketCost = ticketPriceController.Student(1, "adult");
-            Assert.AreEqual(-1, studentTicketCost);
+            Assert.AreEqual(-1m, studentTicketCost);
         }
         [TestCase, Description("Test for senior ticket")]
         public void When_1Senior_Expect_Negative1()
         {
             TicketPriceController ticketPriceController = new();
             var studentTicketCost = ticketPriceController.Student(1, "senior");
-            Assert.AreEqual(-1, studentTicketCost);
+            Assert.AreEqual(-1m, studentTicketCost);
         }
     }
 
@@ -372,7 +371,7 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var familyPassTicketCost = ticketPriceController.Family_Pass(1, 3, 1);
-            Assert.AreEqual(-1, familyPassTicketCost);
+            Assert.AreEqual(-1m, familyPassTicketCost);
             Assert.NotNull(familyPassTicketCost);
             Assert.IsNotNull(familyPassTicketCost);
         }
@@ -381,28 +380,28 @@ namespace Cinema_Tests
         {
             TicketPriceController ticketPriceController = new();
             var familyPassTicketCost = ticketPriceController.Family_Pass(1, 0, 4);
-            Assert.AreEqual(-1, familyPassTicketCost);
+            Assert.AreEqual(-1m, familyPassTicketCost);
         }
         [TestCase, Description("1 Family pass 4 Adults 0 Children should return -1")]
         public void When_1FamilyPass4Adult0Child_Expect_Negative1()
         {
             TicketPriceController ticketPriceController = new();
             var familyPassTicketCost = ticketPriceController.Family_Pass(1, 4, 0);
-            Assert.AreEqual(-1, familyPassTicketCost);
+            Assert.AreEqual(-1m, familyPassTicketCost);
         }
         [TestCase, Description("10 Family pass 20 Adults 20 Children should return -1")]
         public void When_10FamilyPass20Adult20Child_Expect_Negative1()
         {
             TicketPriceController ticketPriceController = new();
             var familyPassTicketCost = ticketPriceController.Family_Pass(10, 20, 20);
-            Assert.AreEqual(-1, familyPassTicketCost);
+            Assert.AreEqual(-1m, familyPassTicketCost);
         }
         [TestCase, Description("Negative numbers are handled, should return -1")]
         public void When_Negative1FamilyPass2Adult2Child_Expect_Negative1()
         {
             TicketPriceController ticketPriceController = new();
             var familyPassTicketCost = ticketPriceController.Family_Pass(-1, 2, 2);
-            Assert.AreEqual(-1, familyPassTicketCost);
+            Assert.AreEqual(-1m, familyPassTicketCost);
         }
     }
 
@@ -413,46 +412,93 @@ namespace Cinema_Tests
         public void When_1AdultThursday_Expect_Cost2150()
         {
             TicketPriceController ticketPriceController = new();
-            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(1, "adult", "thursday");
-            Assert.AreEqual(21.50m, familyPassTicketCost);
-            Assert.NotNull(familyPassTicketCost);
-            Assert.IsInstanceOf<decimal>(familyPassTicketCost);
-            Assert.IsNotNull(familyPassTicketCost);
+            var chickFlickThursdayCost = ticketPriceController.Chick_Flick_Thursday(1, "adult", "thursday");
+            Assert.AreEqual(21.50m, chickFlickThursdayCost);
+            Assert.NotNull(chickFlickThursdayCost);
+            Assert.IsInstanceOf<decimal>(chickFlickThursdayCost);
+            Assert.IsNotNull(chickFlickThursdayCost);
         }
         [TestCase, Description("3 Adults on Thursday cost $63.50")]
         public void When_1AdultThursday_Expect_Cost6350()
         {
             TicketPriceController ticketPriceController = new();
-            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(3, "adult", "thursday");
-            Assert.AreEqual(64.50m, familyPassTicketCost);
+            var chickFlickThursdayCost = ticketPriceController.Chick_Flick_Thursday(3, "adult", "thursday");
+            Assert.AreEqual(64.50m, chickFlickThursdayCost);
         }
         [TestCase, Description("1 Adult on Wednesday, returns -1")]
         public void When_1AdultWednesday_Expect_Negative1()
         {
             TicketPriceController ticketPriceController = new();
-            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(1, "adult", "wednesday");
-            Assert.AreEqual(-1, familyPassTicketCost);
+            var chickFlickThursdayCost = ticketPriceController.Chick_Flick_Thursday(1, "adult", "wednesday");
+            Assert.AreEqual(-1m, chickFlickThursdayCost);
         }
         [TestCase, Description("1 Child on Thursday, returns -1")]
         public void When_1ChildThursday_Expect_Negative1()
         {
             TicketPriceController ticketPriceController = new();
-            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(1, "child", "thursday");
-            Assert.AreEqual(-1, familyPassTicketCost);
+            var chickFlickThursdayCost = ticketPriceController.Chick_Flick_Thursday(1, "child", "thursday");
+            Assert.AreEqual(-1m, chickFlickThursdayCost);
         }
         [TestCase, Description("1 Student on Thursday, returns -1")]
         public void When_1StudentThursday_Expect_Negative1()
         {
             TicketPriceController ticketPriceController = new();
-            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(1, "student", "thursday");
-            Assert.AreEqual(-1, familyPassTicketCost);
+            var chickFlickThursdayCost = ticketPriceController.Chick_Flick_Thursday(1, "student", "thursday");
+            Assert.AreEqual(-1m, chickFlickThursdayCost);
         }
         [TestCase, Description("1 @du17 handles random strings, returns -1")]
         public void When_1RandomStringThursday_Expect_Negative1()
         {
             TicketPriceController ticketPriceController = new();
-            var familyPassTicketCost = ticketPriceController.Chick_Flick_Thursday(1, "@du17", "thursday");
-            Assert.AreEqual(-1, familyPassTicketCost);
+            var chickFlickThursdayCost = ticketPriceController.Chick_Flick_Thursday(1, "@du17", "thursday");
+            Assert.AreEqual(-1m, chickFlickThursdayCost);
+        }
+    }
+
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Kids Careers")]
+    public class KidsCareers
+    {
+        [TestCase, Description("Standard Kid Career, 1 Ticket on Wednesday on a holiday cost $12")]
+        public void When_1CareerWednesdayHoliday_Expect_Cost12()
+        {
+            TicketPriceController ticketPriceController = new();
+            var kidsCareersCost = ticketPriceController.Kids_Careers(1, "wednesday", true);
+            Assert.AreEqual(12.00M, kidsCareersCost);
+        }
+        [TestCase, Description("4 Tickets on Wednesday on a holiday cost $48")]
+        public void When_4CareerWednesdayHoliday_Expect_Cost48()
+        {
+            TicketPriceController ticketPriceController = new();
+            var kidsCareersCost = ticketPriceController.Kids_Careers(4, "wednesday", true);
+            Assert.AreEqual(48m, kidsCareersCost);
+        }
+        [TestCase, Description("1 Tickets on Tuesday on a holiday, returns -1")]
+        public void When_1CareerTuesdayHoliday_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var kidsCareersCost = ticketPriceController.Kids_Careers(1, "tuesday", true);
+            Assert.AreEqual(-1m, kidsCareersCost);
+        }
+        [TestCase, Description("-1 Tickets on Wednesday on a holiday, returns -1")]
+        public void When_Negative1CareerWednesdayHoliday_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var kidsCareersCost = ticketPriceController.Kids_Careers(-1, "wednesday", true);
+            Assert.AreEqual(-1m, kidsCareersCost);
+        }
+        [TestCase, Description("1 Tickets on Wednesday not a holiday, returns -1")]
+        public void When_1CareerWednesdayNotHoliday_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var kidsCareersCost = ticketPriceController.Kids_Careers(1, "wednesday", false);
+            Assert.AreEqual(-1m, kidsCareersCost);
+        }
+        [TestCase, Description("1 Tickets on ‘RandomString’ on a holiday, returns -1")]
+        public void When_1CareerRandomStringHoliday_Expect_Negative1()
+        {
+            TicketPriceController ticketPriceController = new();
+            var kidsCareersCost = ticketPriceController.Kids_Careers(1, "RandomString", true);
+            Assert.AreEqual(-1m, kidsCareersCost);
         }
     }
 }
