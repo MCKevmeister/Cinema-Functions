@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Cinema_Tests
 {
-    [TestFixture(Author = "Mark Christison"), Description("Tests for Adult Before 5")]
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Adult Before 5"), Category("AdultBefore5")]
     public class AdultBefore5
     {
         [TestCase, Description("Test for Standard input")]
@@ -80,7 +80,7 @@ namespace Cinema_Tests
         }
     }
 
-    [TestFixture(Author = "Mark Christison"), Description("Tests for Adult After 5")]
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Adult After 5"), Category("AdultAfter5")]
     public class AdultAfter5
     {
         [TestCase, Description("Test for 1 Adult after 5pm")]
@@ -140,7 +140,7 @@ namespace Cinema_Tests
         }
     }
 
-    [TestFixture(Author = "Mark Christison"), Description("Tests for Adult Tuesday")]
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Adult Tuesday"), Category("AdultTuesday")]
     public class AdultTuesday
     {
         [TestCase, Description("Test for Standard input")]
@@ -192,7 +192,7 @@ namespace Cinema_Tests
         }
     }
 
-    [TestFixture(Author = "Mark Christison"), Description("Tests for Child Under 16")]
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Child Under 16"), Category("ChildUnder16")]
     public class ChildUnder16
     {
         [TestCase, Description("Test for Standard input, 1 Child")]
@@ -236,7 +236,7 @@ namespace Cinema_Tests
         }
     }
 
-    [TestFixture(Author = "Mark Christison"), Description("Tests for Senior")]
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Senior"), Category("Senior")]
     public class Senior
     {
         [TestCase, Description("Test for Standard input, 1 Senior")]
@@ -296,7 +296,7 @@ namespace Cinema_Tests
         }
     }
 
-    [TestFixture(Author = "Mark Christison"), Description("Tests for Senior")]
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Senior"), Category("Student")]
     public class Student
     {
         [TestCase, Description("Test for Standard input, 1 Student")]
@@ -343,7 +343,7 @@ namespace Cinema_Tests
         }
     }
 
-    [TestFixture(Author = "Mark Christison"), Description("Tests for Family Pass")]
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Family Pass"), Category("FamilyPass")]
     public class FamilyPass
     {
         [TestCase, Description("Test for family ticket, 2 Adults 2 Children cost $46")]
@@ -405,7 +405,7 @@ namespace Cinema_Tests
         }
     }
 
-    [TestFixture(Author = "Mark Christison"), Description("Tests for Chick Flick Thursday")]
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Chick Flick Thursday"), Category("ChickFlickThursday")]
     public class ChickFlickThursday
     {
         [TestCase, Description("Standard Chick Flick Thursday, 1 Adult on Thursday cost $21.50")]
@@ -455,7 +455,7 @@ namespace Cinema_Tests
         }
     }
 
-    [TestFixture(Author = "Mark Christison"), Description("Tests for Kids Careers")]
+    [TestFixture(Author = "Mark Christison"), Description("Tests for Kids Careers"), Category("KidsCareers")]
     public class KidsCareers
     {
         [TestCase, Description("Standard Kid Career, 1 Ticket on Wednesday on a holiday cost $12")]
