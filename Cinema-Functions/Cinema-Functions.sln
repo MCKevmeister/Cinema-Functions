@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema-Functions", "Cinema-Functions\Cinema-Functions.csproj", "{F7867282-8D9C-491A-AFF2-39D21AAA2902}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema-Tests", "Cinema-Tests\Cinema-Tests.csproj", "{C93F44AD-C9D6-4AF4-98FB-FC9C1CC85486}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema-Functions.UnitTests", "Cinema-Functions.UnitTests\Cinema-Functions.UnitTests.csproj", "{C93F44AD-C9D6-4AF4-98FB-FC9C1CC85486}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
