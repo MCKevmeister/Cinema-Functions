@@ -67,8 +67,8 @@
             decimal ticketPrice = 46.00M;
             decimal result = -1;
 
-            if ((prQuantityTicket < 1 || prQuantityAdult != 2 || prQuantityChild != 2) &&
-                (prQuantityTicket < 1 || prQuantityAdult != 1 || prQuantityChild != 3)) return result;
+            if ((prQuantityTicket < 1 || prQuantityAdult != 1 || prQuantityChild != 3) &&
+                (prQuantityTicket < 1 || prQuantityAdult != 2 || prQuantityChild != 2)) return result;
             result = (ticketPrice * prQuantityTicket);
             return result;
         }

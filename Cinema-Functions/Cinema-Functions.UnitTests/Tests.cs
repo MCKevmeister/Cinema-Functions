@@ -17,6 +17,8 @@ namespace Cinema_Tests
             
             //Assert
             Assert.AreEqual(14.5m, adultTicketCost);
+            Assert.NotNull(adultTicketCost);
+            Assert.IsInstanceOf<decimal>(adultTicketCost);
         }
 
         [Test, Description("Test for different day")]
@@ -30,6 +32,8 @@ namespace Cinema_Tests
             
             // Assert
             Assert.AreEqual(14.5m, adultTicketCost);
+            Assert.NotNull(adultTicketCost);
+            Assert.IsInstanceOf<decimal>(adultTicketCost);
         }
 
         [Test, Description("Test for 3 adult tickets")]
@@ -43,6 +47,8 @@ namespace Cinema_Tests
             
             // Assert
             Assert.AreEqual(43.50m, adultTicketCost);
+            Assert.NotNull(adultTicketCost);
+            Assert.IsInstanceOf<decimal>(adultTicketCost);
         }
 
         [Test, Description("Test for adult on tuesday")]
@@ -56,6 +62,8 @@ namespace Cinema_Tests
             
             //Assert
             Assert.AreEqual(-1m, adultTicketCost);
+            Assert.NotNull(adultTicketCost);
+            Assert.IsInstanceOf<decimal>(adultTicketCost);
         }
 
         [Test, Description("Test for Child, should return -1")]
@@ -69,6 +77,8 @@ namespace Cinema_Tests
             
             // Assert
             Assert.AreEqual(-1m, adultTicketCost);
+            Assert.NotNull(adultTicketCost);
+            Assert.IsInstanceOf<decimal>(adultTicketCost);
         }
 
         [Test, Description("Test for Student, should return -1")]
@@ -82,6 +92,8 @@ namespace Cinema_Tests
             
             // Assert
             Assert.AreEqual(-1m, adultTicketCost);
+            Assert.NotNull(adultTicketCost);
+            Assert.IsInstanceOf<decimal>(adultTicketCost);
         }
 
         [Test, Description("Test for Senior, should return -1")]
@@ -95,9 +107,13 @@ namespace Cinema_Tests
             
             // Assert
             Assert.AreEqual(-1m, adultTicketCost);
+            Assert.NotNull(adultTicketCost);
+            Assert.IsInstanceOf<decimal>(adultTicketCost);
         }
 
-        [Test, Ignore("Bug"), Description("Time does not work in 12 hour format. Input Validation is required to allow for only PM times.")]
+        [Test]
+        [Ignore("Bug, Time does not work in 12 hour format. Input Validation is required to allow for only PM times.")]
+        [Description("1 Adult on Wednesday at 10am, should return 14.50")]
         public void When_1AdultWednesday10am_Expect_Cost1450()
         {
             // Arrange
@@ -108,6 +124,8 @@ namespace Cinema_Tests
 
             // Assert
             Assert.AreEqual(14.5m, adultTicketCost);
+            Assert.NotNull(adultTicketCost);
+            Assert.IsInstanceOf<decimal>(adultTicketCost);
         }
 
         [Test, Description("Test for family, should return -1")]
@@ -121,6 +139,8 @@ namespace Cinema_Tests
 
             // Assert
             Assert.AreEqual(-1m, adultTicketCost);
+            Assert.NotNull(adultTicketCost);
+            Assert.IsInstanceOf<decimal>(adultTicketCost);
         }
     }
 
@@ -138,6 +158,8 @@ namespace Cinema_Tests
             
             // Assert
             Assert.AreEqual(17.5m, adultTicketCost);
+            Assert.NotNull(adultTicketCost);
+            Assert.IsInstanceOf<decimal>(adultTicketCost);
         }
 
         [Test, Description("Handle Multiple adult tickets")]
@@ -151,6 +173,8 @@ namespace Cinema_Tests
             
             // Assert
             Assert.AreEqual(35m,adultTicketCost);
+            Assert.NotNull(adultTicketCost);
+            Assert.IsInstanceOf<decimal>(adultTicketCost);
         }
 
         [Test, Description("1 Adult on Saturday at 8 Cost $17.50")]
@@ -235,7 +259,8 @@ namespace Cinema_Tests
             Assert.AreEqual(13m,adultTicketCost);
         }
 
-        [Test, Description("Test for 4 adult tickets")]
+        [Test]
+        [Description("Test for 4 adult tickets")]
         public void When_FourAdultsTuesday_Expect_Cost52()
         {
             //Arrange
@@ -722,13 +747,13 @@ namespace Cinema_Tests
     public class KidsCareers
     {
         [Test, Description("Standard Kid Career, 1 Ticket on Wednesday on a holiday cost $12")]
-        public void When_1CareerWednesdayHoliday_Expect_Cost12()
+        public void When_1CareerWednesdayNotHoliday_Expect_Cost12()
         {
             //Arrange
             TicketPriceController ticketPriceController = new();
             
             //Act
-            var kidsCareersCost = ticketPriceController.Kids_Careers(1, "wednesday", true);
+            var kidsCareersCost = ticketPriceController.Kids_Careers(1, "wednesday", false);
             
             //Assert
             Assert.AreEqual(12.00M, kidsCareersCost);
@@ -740,12 +765,12 @@ namespace Cinema_Tests
             TicketPriceController ticketPriceController = new();
             
             //Act
-            var kidsCareersCost = ticketPriceController.Kids_Careers(4, "wednesday", true);
+            var kidsCareersCost = ticketPriceController.Kids_Careers(4, "wednesday", false);
             
             //Assert
             Assert.AreEqual(48m, kidsCareersCost);
         }
-        [Test, Description("1 Tickets on Tuesday on a holiday, returns -1")]
+        [Test, Description("1 Tickets on Tuesday on a holiday, returns 48")]
         public void When_1CareerTuesdayHoliday_Expect_Negative1()
         {
             //Arrange
@@ -769,14 +794,14 @@ namespace Cinema_Tests
             //Assert
             Assert.AreEqual(-1m, kidsCareersCost);
         }
-        [Test, Description("1 Tickets on Wednesday not a holiday, returns -1")]
-        public void When_1CareerWednesdayNotHoliday_Expect_Negative1()
+        [Test, Description("1 Tickets on Wednesday a holiday, returns -1")]
+        public void When_1CareerWednesdayHoliday_Expect_Negative1()
         {
             //Arrange
             TicketPriceController ticketPriceController = new();
             
             //Act
-            var kidsCareersCost = ticketPriceController.Kids_Careers(1, "wednesday", false);
+            var kidsCareersCost = ticketPriceController.Kids_Careers(1, "wednesday", true);
             
             //Assert
             Assert.AreEqual(-1m, kidsCareersCost);
